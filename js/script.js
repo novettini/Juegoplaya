@@ -144,7 +144,7 @@ function buyWeapon() {
     }
   } else {
     text.innerText = "Ya tenes todos los elementos posibles!";
-    button2.innerText = "Sell weapon for 15 gold";
+    button2.innerText = "Vender elemento por 15 gold";
     button2.onclick = sellWeapon;
   }
 }
@@ -154,10 +154,10 @@ function sellWeapon() {
     gold += 15;
     goldText.innerText = gold;
     let currentWeapon = inventory.shift();
-    text.innerText = "You sold a " + currentWeapon + ".";
-    text.innerText += " In your inventory you have: " + inventory;
+    text.innerText = "Vos vendiste tu " + currentWeapon + ".";
+    text.innerText += " En tu puesto tenes: " + inventory;
   } else {
-    text.innerText = "Don't sell your only weapon!";
+    text.innerText = "No vendas tu unico elemento!";
   }
 }
 
@@ -179,20 +179,20 @@ function fightDragon() {
 function goFight() {
   update(locations[3]);
   monsterHealth = monsters[fighting].health;
-  monsterStats.style.display = "block";
+  monsterStats.style.display = "Te ignora";
   nombreDelTurista.innerText = monsters[fighting].name;
   saludDelTurista
 .innerText = monsterHealth;
 }
 
 function attack() {
-  text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText = "el " + monsters[fighting].name + " te bolupreguntea";
+  text.innerText += " Vos tratas de hacerlo razonar con tu " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
     monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
   } else {
-    text.innerText += " You miss.";
+    text.innerText += " Fallaste.";
   }
   healthText.innerText = health;
   saludDelTurista
@@ -207,7 +207,7 @@ function attack() {
     }
   }
   if (Math.random() <= .1 && inventory.length !== 1) {
-    text.innerText += " Your " + inventory.pop() + " breaks.";
+    text.innerText += " Tu " + inventory.pop() + " se rompió.";
     currentWeapon--;
   }
 }
