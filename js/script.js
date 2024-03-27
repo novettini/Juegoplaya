@@ -287,7 +287,7 @@ function dodge() {
 
   if (health <= 0 || energia <=0) {
     lose();}
-
+ 
   else {  
   aleatorio = Math.ceil(Math.random()*2);
   monsterStats.style.display="block";
@@ -416,14 +416,8 @@ function pick(guess) {
              text.innerText = "Estuviste lanzando toda la tarde, perdiste energia y ganaste cansancio";
       break;
     }}
-    
-//     button4.style.display="block";
-//     }
-
 
      else {
     text.innerText = "Te falta plata para comprar comida, pedile al Sugara un aumento y volvé.";
   }
    }
-
-// }
