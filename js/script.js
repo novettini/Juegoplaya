@@ -60,7 +60,7 @@ const locations = [
   },
   {
     name: "Bajar a la arena",
-    "button text": ["Razonar con Wimpa", "Razonar con Negrito", "Volver al Puesto Zhen"],
+    "button text": ["Razonar con Wimpa parlantero", "Razonar con Negrito borracho", "Volver al Puesto Zhen"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "Bajaste del puesto, ves varios turistas desagradables"
   },
@@ -68,7 +68,7 @@ const locations = [
     name: "fight",
     "button text": ["Explicarle", "Evitarlo", "Irte para no matarlo"],
     "button functions": [attack, dodge, goTown],
-    text: "Estás intentando hablar en un idioma desconocido, las eses no existen."
+    text: "Estás intentando hablar en un idioma desconocido, las eses no existen. <br> ¿Lograrás hacerlo entender antes de que te canse o te quite vida?"
   },
   {
     name: "El turista entendío",
@@ -97,7 +97,7 @@ const locations = [
   {
     name: "Compra venta de elementos",
     "button text": ["comprar", "vender","ver mochila" ,"irse"],
-    "button functions": [buyWeapon, sellWeapon, verInventario ,goTown],
+    "button functions": [buyWeapon, sellWeapon, verInventario ,goStore],
     text: "Acá podes comprar o vender los siguientes elementos: Silbato, Codigo, Ordenanza, Torpedo."
   },
   
@@ -107,7 +107,6 @@ function verInventario() {
   text.innerText= "Actualmente tenés: " + inventory 
   
 }
-
 
 // initialize buttons
 button1.onclick = goStore ;
@@ -151,6 +150,7 @@ function goCave() {
 
 function localStore() {
   update(locations[8]);
+  cambiarImagen = imagenFondo.src = "images/elementos.jpg";
 }
 
 
@@ -328,6 +328,8 @@ function lose() {
 
 function winGame() {
   update(locations[6]);
+  cambiarImagen = imagenFondo.src = "images/gusta.jpg";
+
 }
 
 function restart() {
@@ -359,25 +361,27 @@ function pick(guess) {
   while (numbers.length < 10) {
     numbers.push(Math.floor(Math.random() * 11));
   }
-  text.innerText = "Elegiste" + guess + ". acá estan los numeros:\n";
+  text.innerText = "Elegiste " + guess ;
   for (let i = 0; i < 10; i++) {
-    text.innerText += numbers[i] + "\n";
+   
   }
   if (numbers.includes(guess)) {
-    text.innerText += "Acertaste! ganaste 20 Pesos de propina por alejar al perro del Kite";
     gold += 20;
     goldText.innerText = gold;
-  } else {
-    text.innerText += "Erraste, el perro te mordió, perdiste 10 de energía";
+     text.innerText += " Ganaste 20 Pesos de propina por alejar al perro del Kite";
+     
+    }
+     else {
     health -= 10;
     healthText.innerText = health;
+    text.innerText += " El perro te mordió, perdiste 10 de energía";
+    
+        
     if (health <= 0) {
       lose();
-    }
-    
   }
-}
-
+  }
+ }
   
   
 // funciones a agregar luego
