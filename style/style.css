@@ -45,3 +45,10 @@ button {
   background-image: linear-gradient(#fecc4c, #ffac33);
   border: 3px solid #feac32;
 }
+
+
+
+#imagen{
+    width: 100%;
+    height: 400px;
+  }
